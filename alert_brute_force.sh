@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-LOG_FILE="/var/log/auth.log"
 THRESHOLD=5
 
 echo "IPs exceeding failed login threshold ($THRESHOLD):"
 
-grep "Failed password" "$LOG_FILE" \
+sudo journalctl \
+| grep "Failed password" \
 | awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}' \
 | sort \
 | uniq -c \

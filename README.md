@@ -2,14 +2,16 @@
 
 ### alert_brute_force.sh
 
-Detects IP addresses exceeding a configurable failed login threshold.
+Detects IP addresses exceeding a configurable threshold of failed SSH login attempts.
 
 **Features**
 
-- Parses `/var/log/auth.log`
-- Counts failed SSH login attempts
-- Displays suspicious IP addresses
-- Configurable alert threshold
+* Reads authentication events from `journalctl`
+* Counts failed SSH login attempts
+* Identifies source IP addresses
+* Configurable alert threshold
+
+![Alert Brute Force](images/alert_brute_force.png)
 
 ---
 
@@ -19,9 +21,11 @@ Displays a summary of authentication failures.
 
 **Features**
 
-- Counts failed password attempts
-- Counts invalid user login attempts
-- Quick security overview
+* Counts failed password attempts
+* Counts invalid user login attempts
+* Provides a quick authentication security overview
+
+![Failed Login Detect](images/fail_login_detect.png)
 
 ---
 
@@ -31,9 +35,12 @@ Lists the most frequent source IP addresses found in failed SSH login attempts.
 
 **Features**
 
-- Parses authentication logs
-- Counts failed login sources
-- Sorts attackers by number of attempts
+* Reads authentication events from `journalctl`
+* Extracts source IP addresses
+* Counts failed login sources
+* Sorts IP addresses by number of attempts
+
+![IP Counter](images/IP_Counter.png)
 
 ---
 
@@ -43,11 +50,13 @@ Displays a real-time system resource summary.
 
 **Features**
 
-- CPU usage
-- Load average
-- RAM usage
-- Disk usage
-- Top CPU-consuming processes
+* CPU usage
+* Load average
+* RAM usage
+* Disk usage
+* Top CPU-consuming processes
+
+![System Monitor](images/system_monitor.png)
 
 ---
 
@@ -57,10 +66,12 @@ Displays the system uptime in a human-readable format.
 
 **Features**
 
-- Days
-- Hours
-- Minutes
-- Seconds
+* Days
+* Hours
+* Minutes
+* Seconds
+
+![System Uptime](images/uptime.png)
 
 ## Usage
 
@@ -68,8 +79,12 @@ Displays the system uptime in a human-readable format.
 chmod +x *.sh
 
 ./alert_brute_force.sh
+
 ./fail_login_detect.sh
+
 ./ip_counter.sh
+
 ./system_monitor.sh
+
 ./uptime.sh
 ```

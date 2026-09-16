@@ -1,6 +1,5 @@
 #!/bin/bash
 
-LOG_FILE="/var/log/auth.log"
-
 echo "Top attacking IPs:"
-grep "Failed password" $LOG_FILE | awk '{print $(NF-3)}' | sort | uniq -c | sort -nr
+
+sudo journalctl | grep "Failed password" | awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}' | sort | uniq -c | sort -nr
